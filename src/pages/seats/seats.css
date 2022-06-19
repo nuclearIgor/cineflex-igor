@@ -1,0 +1,26 @@
+main {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.seat-display {
+    padding: 2px;
+    margin: 7px 6px;
+    width: 24px;
+    height: 24px;
+
+    background: #C3CFD9;
+border: 1px solid #808F9D;
+/* border-radius: 12px */
+    border-radius: 50%;
+}
+
+.selecionado {
+    background-color: #8DD7CF;
+}
+
+.indisponivel {
+    background-color: #FBE192;
+
+}
