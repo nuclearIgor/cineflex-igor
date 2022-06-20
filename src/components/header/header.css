@@ -1,0 +1,33 @@
+header {
+    height: 67px;
+    background-color: #C3CFD9;
+}
+
+header > .header {
+    padding: 0;
+    height: 100%;
+
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 40px;
+    
+    color: #E8833A;
+}
+
+.header > span {
+    position: absolute;
+    left: 5px;
+
+    height: 20px;
+    width: 40px;
+
+    line-height: 20px;
+    text-align: center;
+
+    border-radius: 6px;
+
+    background-color: #E8833A;
+    
+    font-size: 14px;
+    color: #293845;
+}
