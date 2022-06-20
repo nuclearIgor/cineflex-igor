@@ -1,5 +1,6 @@
 import { useEffect } from "react"
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { OrangeButton } from "../../components/button";
 import './sucesso.css'
 
 export const Sucesso = (props) => {
@@ -32,6 +33,11 @@ export const Sucesso = (props) => {
                     <p>Nome: {state.name}</p>
                     <p>CPF: {state.cpf}</p>
                 </div>
+
+                            <Link to={'/'}>
+                            <OrangeButton text={'Voltar pra Home'}  />
+                            </Link>
+
             </div>
         </>
     )

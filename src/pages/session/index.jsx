@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import {SessionCard} from './sessionCard'
+import { Footer } from "../../components/footer"
 import './session.css'
 
 
@@ -27,6 +28,7 @@ export const Session = () => {
         Array.isArray(sessionData.days) && sessionData.days.map(day => (
             <SessionCard key={day.id} day={day}/>
         ))}
+        <Footer movieData={{title: sessionData.title, poster: sessionData.posterURL}}/>
         </>
         
     )
