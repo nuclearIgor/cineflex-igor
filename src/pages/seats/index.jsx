@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { SeatForm } from "./form"
 import './seats.css'
+import { SeatsLayout } from "./seatsLayout"
 
 export const Seats = () => {
 
     const {idSessao} = useParams()
     const [sessionData, setSessionData] = useState({})
     const [loading, setLoading] = useState(false)
+    const [selectedSeats, setSelectedSeats] = useState([])
 
     async function fetchSeats() {
         setLoading(true)
@@ -20,8 +23,8 @@ export const Seats = () => {
 
     useEffect(() => { 
         fetchSeats()
+        console.log(sessionData);
     }, [])
-
 
     const handleSeatSelection = (seat) => {
         if(!seat.isAvailable){
@@ -31,10 +34,11 @@ export const Seats = () => {
 
         // seleciona temporariamente o assento caso este esteja disponivel e ainda nao selecionado 
         if(seat.temporarySelect === undefined && seat.isAvailable === true){
+            setSelectedSeats([...selectedSeats, {id: seat.id, name: seat.name}])
+
             const otherSeats = sessionData.seats.filter(item => item.id !== seat.id)
             
             seat['temporarySelect'] = true
-            console.log('selected seat', seat);
             setSessionData({...sessionData, seats: [...otherSeats, seat].sort((prev, cur) => prev.name - cur.name) })
             return
         }
@@ -43,26 +47,29 @@ export const Seats = () => {
         if(seat.temporarySelect === true) {
             const otherSeats = sessionData.seats.filter(item => item.id !== seat.id)
             
+            const stillSelected = selectedSeats.filter(item => item !== seat.id) 
+            setSelectedSeats(stillSelected)
+
             seat['temporarySelect'] = undefined
-            console.log('selected seat', seat);
             setSessionData({...sessionData, seats: [...otherSeats, seat].sort((prev, cur) => prev.name - cur.name) })
+
+
             return
         }
 
     }
 
-
+    const formData = {
+        movie: sessionData.movie?.title,
+        day: sessionData.day?.date,
+        time: sessionData.name,
+        selectedSeats: selectedSeats
+    }
+    
     return (
-        <main>
-            {Array.isArray(sessionData.seats) && sessionData.seats.map(seat => (
-                <div key={seat.id}
-                onClick={() => handleSeatSelection(seat)}
-                className={
-                    `seat-display 
-                    ${seat.isAvailable? "" : "indisponivel"}
-                    ${seat.temporarySelect? "selecionado" : ""}`}
-                >{seat.name}</div>
-            ))}
-     </main>
+        <>
+            <SeatsLayout sessionData={sessionData} handleSeatSelection={handleSeatSelection}/>
+            <SeatForm formData={formData}/>
+        </>
     )
 }
