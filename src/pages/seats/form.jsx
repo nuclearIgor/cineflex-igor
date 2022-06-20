@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useState } from "react"
 import {useNavigate} from 'react-router-dom'
+import { OrangeButton } from "../../components/button"
+import './form.css'
 
 export const SeatForm = ({formData}) => {
 
@@ -66,7 +68,8 @@ export const SeatForm = ({formData}) => {
             </div>
 
 
-            <button type="submit">Reservar assento(s)</button>
+            <OrangeButton type={'submit'} text={'Reservar assento(s)'}/>
+            {/* <button type="submit">Reservar assento(s)</button> */}
         </form>
     )
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { SeatForm } from "./form"
-import './seats.css'
 import { SeatsLayout } from "./seatsLayout"
+import { Footer } from "../../components/footer"
+import './seats.css'
 
 export const Seats = () => {
 
@@ -70,6 +71,11 @@ export const Seats = () => {
         <>
             <SeatsLayout sessionData={sessionData} handleSeatSelection={handleSeatSelection}/>
             <SeatForm formData={formData}/>
+            <Footer movieData={{
+                title: sessionData.movie?.title,
+                poster: sessionData.movie?.posterURL,
+                day: sessionData.day?.weekday,
+                time: sessionData.name}}/>
         </>
     )
 }
