@@ -24,7 +24,6 @@ export const Seats = () => {
 
     useEffect(() => { 
         fetchSeats()
-        console.log(sessionData);
     }, [])
 
     const handleSeatSelection = (seat) => {

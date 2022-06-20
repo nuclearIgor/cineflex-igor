@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './header.css'
 
@@ -6,10 +5,6 @@ export const Header = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
-
-    useEffect(() => {
-        console.log('location', );
-    } , [location])
 
     const handleNavigate = () => {
         navigate(-1)

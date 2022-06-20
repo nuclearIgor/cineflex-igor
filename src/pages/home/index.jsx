@@ -19,7 +19,6 @@ export const Home = () => {
 
     return (
         <>
-        {/* header */}
         <h1>Selecione o filme</h1>
         <main>
         {

@@ -1,11 +1,9 @@
-import { useEffect, useReducer, useState } from "react"
+import { useState } from "react"
 import {useNavigate} from 'react-router-dom'
 import { OrangeButton } from "../../components/button"
 import './form.css'
 
 export const SeatForm = ({formData}) => {
-
-    useEffect(() => {console.log(formData);}, [])
 
     const navigate = useNavigate()
 
@@ -31,12 +29,6 @@ export const SeatForm = ({formData}) => {
             ids: formData.selectedSeats.map(seat => seat.id)
         }
 
-        let redirectData = {
-            formData,
-            name: nome,
-            cpf: cpf
-        }
-
         try {
             const result = await fetch('https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many', {
                 headers: {
@@ -49,7 +41,7 @@ export const SeatForm = ({formData}) => {
             navigate('/sucesso', {replace: true, state: {...formData,   name: nome, cpf: cpf}})
 
         } catch (error) {
-            alert('error')
+            alert('algo deu errado')
             console.log(error);
         }
 
@@ -69,7 +61,6 @@ export const SeatForm = ({formData}) => {
 
 
             <OrangeButton type={'submit'} text={'Reservar assento(s)'}/>
-            {/* <button type="submit">Reservar assento(s)</button> */}
         </form>
     )
 
