@@ -1,0 +1,15 @@
+.button-orange {
+    width: 225px;
+    height: 42px;
+
+    margin: 10px auto;
+
+    background: #E8833A;
+    border-radius: 3px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFF;
+}
